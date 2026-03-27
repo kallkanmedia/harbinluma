@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harbin & Muazes | Ftesë</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --gold:#c9a45d;
+      --gold-dark:#9c7740;
+      --dark:#3a2f25;
+      --text:#5a4d40;
+      --soft:#f8f4ee;
+      --soft-2:#efe6d9;
+      --white:#ffffff;
+      --shadow:0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:'Montserrat', sans-serif;
+      background:#fff;
+      overflow-x:hidden;
+      color:var(--dark);
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    /* ENTRY */
+    #entry-screen{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(#f8f4ee,#efe6d9);
+      z-index:9999;
+      transition:1s;
+    }
+
+    .invite-card{
+      width:90%;
+      max-width:420px;
+      height:80vh;
+      max-height:820px;
+      border-radius:30px;
+      background:url('images/envelope.jpg') center/cover no-repeat;
+      position:relative;
+      box-shadow:0 20px 60px rgba(0,0,0,0.2);
+      overflow:hidden;
+    }
+
+    .top-text{
+      position:absolute;
+      top:12%;
+      left:50%;
+      transform:translateX(-50%);
+      width:82%;
+      text-align:center;
+      font-family:'Playfair Display', serif;
+      font-style:italic;
+      font-size:clamp(20px,2.3vw,30px);
+      color:#8a6b44;
+      line-height:1.35;
+      text-shadow:0 2px 12px rgba(255,255,255,0.45);
+    }
+
+    .seal{
+      position:absolute;
+      top:52%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      cursor:pointer;
+      background:transparent;
+      border:none;
+      outline:none;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    .bottom-text{
+      position:absolute;
+      bottom:10%;
+      left:50%;
+      transform:translateX(-50%);
+      width:80%;
+      text-align:center;
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#8a6b44;
+      background:rgba(255,255,255,0.22);
+      backdrop-filter:blur(5px);
+      padding:10px 16px;
+      border-radius:999px;
+    }
+
+    /* MAIN */
+    #main{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1.2s;
+    }
+
+    #main.show{
+      opacity:1;
+      transform:none;
+    }
+
+    /* HEADER */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,0.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(201,164,93,0.16);
+    }
+
+    .site-header-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:16px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:'Playfair Display', serif;
+      font-size:24px;
+      color:var(--dark);
+      font-weight:600;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .header-date{
+      font-size:14px;
+      color:#7d6b58;
+      text-align:right;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:
+        linear-gradient(rgba(255,255,255,0.76),rgba(255,255,255,0.9)),
+        url('images/envelope.jpg') center/cover no-repeat;
+      padding:120px 20px 80px;
+    }
+
+    .hero-box{
+      max-width:850px;
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(201,164,93,0.18);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:46px 28px;
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-sub{
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:12px;
+      color:#8a6b44;
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      font-family:'Great Vibes', cursive;
+      font-size:clamp(68px,10vw,120px);
+      color:var(--gold);
+      margin:0;
+      line-height:1;
+      font-weight:400;
+    }
+
+    .hero p{
+      margin:18px auto 0;
+      max-width:620px;
+      font-size:16px;
+      color:#5f5143;
+      line-height:1.8;
+    }
+
+    /* SECTION GENERIC */
+    .section{
+      padding:90px 20px;
+    }
+
+    .container{
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      margin:0 0 12px;
+      font-family:'Playfair Display', serif;
+      font-size:42px;
+      color:var(--gold-dark);
+    }
+
+    .section-title p{
+      margin:0 auto;
+      max-width:760px;
+      color:#6b5c4d;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    /* COUPLE */
+    .couple-grid{
+      display:grid;
+      grid-template-columns:1fr 110px 1fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .person-card{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+      overflow:hidden;
+      border:1px solid rgba(201,164,93,0.14);
+    }
+
+    .person-photo{
+      height:420px;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .person-content{
+      padding:28px;
+      text-align:center;
+    }
+
+    .person-content h3{
+      margin:0;
+      font-family:'Playfair Display', serif;
+      font-size:34px;
+      color:var(--dark);
+    }
+
+    .person-content .surname{
+      margin-top:6px;
+      color:var(--gold);
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:13px;
+    }
+
+    .person-content p{
+      margin:18px 0 0;
+      color:#6b5c4d;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    .heart-divider{
+      text-align:center;
+      font-family:'Great Vibes', cursive;
+      font-size:68px;
+      color:var(--gold);
+      user-select:none;
+    }
+
+    /* DAY */
+    .day-section{
+      background:linear-gradient(180deg,#fcfaf6 0%,#f5ede2 100%);
+    }
+
+    .day-box{
+      max-width:860px;
+      margin:0 auto;
+      background:#fff;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:40px 28px;
+      text-align:center;
+      border:1px solid rgba(201,164,93,0.16);
+    }
+
+    .day-date{
+      font-family:'Playfair Display', serif;
+      font-size:38px;
+      color:var(--dark);
+      margin-bottom:24px;
+    }
+
+    .day-date span{
+      color:var(--gold);
+    }
+
+    .count-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-bottom:26px;
+    }
+
+    .count-item{
+      background:#faf7f2;
+      border-radius:18px;
+      padding:20px 10px;
+      border:1px solid rgba(201,164,93,0.12);
+    }
+
+    .count-item .num{
+      font-family:'Playfair Display', serif;
+      font-size:38px;
+      color:var(--gold-dark);
+      line-height:1;
+    }
+
+    .count-item .label{
+      margin-top:8px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      color:#7d6d5d;
+    }
+
+    .day-box .description{
+      margin:0 auto;
+      max-width:680px;
+      line-height:1.8;
+      color:#655647;
+      font-size:15px;
+    }
+
+    /* STORY */
+    .story-section{
+      background:#fff;
+    }
+
+    .story-list{
+      display:grid;
+      gap:28px;
+    }
+
+    .story-item{
+      display:grid;
+      grid-template-columns:1fr 120px 1fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .story-image{
+      border-radius:24px;
+      min-height:280px;
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .story-date{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:linear-gradient(180deg,#f7efe3,#efe2cf);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      margin:auto;
+      border:1px solid rgba(201,164,93,0.2);
+      box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .story-date .year{
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      color:var(--gold-dark);
+      line-height:1;
+    }
+
+    .story-date .month{
+      margin-top:6px;
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:2px;
+      color:#7b6b59;
+    }
+
+    .story-text{
+      background:#fff;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+      border:1px solid rgba(201,164,93,0.14);
+    }
+
+    .story-text h3{
+      margin:0 0 10px;
+      font-family:'Playfair Display', serif;
+      font-size:30px;
+      color:var(--dark);
+    }
+
+    .story-text p{
+      margin:0;
+      color:#665748;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    /* EVENTS */
+    .events-section{
+      background:linear-gradient(180deg,#fcfaf7 0%,#f7f0e6 100%);
+    }
+
+    .events-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:28px;
+    }
+
+    .event-card{
+      background:#fff;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(201,164,93,0.14);
+    }
+
+    .event-photo{
+      height:280px;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .event-content{
+      padding:28px;
+    }
+
+    .event-content h3{
+      margin:0 0 16px;
+      font-family:'Playfair Display', serif;
+      font-size:32px;
+      color:var(--dark);
+    }
+
+    .event-meta{
+      display:grid;
+      gap:10px;
+      color:#665748;
+      line-height:1.7;
+      font-size:15px;
+      margin-bottom:20px;
+    }
+
+    .event-button{
+      display:inline-block;
+      padding:12px 20px;
+      border-radius:999px;
+      background:var(--gold);
+      color:#fff;
+      font-size:13px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .event-button:hover{
+      background:var(--gold-dark);
+    }
+
+    /* GALLERY */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .gallery-item{
+      border-radius:22px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      transition:transform .4s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.05);
+    }
+
+    /* RSVP */
+    .rsvp-section{
+      background:#fff;
+    }
+
+    .rsvp-box{
+      max-width:900px;
+      margin:0 auto;
+      background:linear-gradient(180deg,#fff 0%,#fbf7f1 100%);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      border:1px solid rgba(201,164,93,0.14);
+    }
+
+    .rsvp-form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .rsvp-form .full{
+      grid-column:1 / -1;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .field label{
+      font-size:14px;
+      color:#6a5a4a;
+      font-weight:500;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      padding:15px 16px;
+      border-radius:16px;
+      border:1px solid rgba(201,164,93,0.2);
+      background:#fff;
+      font-family:'Montserrat', sans-serif;
+      font-size:14px;
+      color:var(--dark);
+      outline:none;
+    }
+
+    .field textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .submit-btn{
+      display:inline-block;
+      border:none;
+      background:var(--gold);
+      color:#fff;
+      padding:16px 24px;
+      border-radius:999px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .submit-btn:hover{
+      background:var(--gold-dark);
+    }
+
+    /* FOOTER */
+    .footer{
+      position:relative;
+      padding:110px 20px;
+      text-align:center;
+      background:
+        linear-gradient(rgba(58,47,37,0.45),rgba(58,47,37,0.55)),
+        url('images/envelope.jpg') center/cover no-repeat;
+      color:#fff;
+    }
+
+    .footer h2{
+      margin:0;
+      font-family:'Great Vibes', cursive;
+      font-size:82px;
+      font-weight:400;
+    }
+
+    .footer p{
+      margin:12px 0 0;
+      font-size:15px;
+      color:rgba(255,255,255,0.9);
+    }
+
+    @media (max-width: 991px){
+      .couple-grid,
+      .story-item,
+      .events-grid,
+      .rsvp-form{
+        grid-template-columns:1fr;
+      }
+
+      .heart-divider{
+        font-size:56px;
+      }
+
+      .count-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .story-date{
+        width:100px;
+        height:100px;
+      }
+
+      .site-header-inner{
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero h1{
+        font-size:72px;
+      }
+
+      .section{
+        padding:72px 16px;
+      }
+
+      .section-title h2{
+        font-size:34px;
+      }
+
+      .gallery-grid{
+        grid-template-columns:1fr;
+      }
+
+      .gallery-item img{
+        height:260px;
+      }
+
+      .person-photo{
+        height:320px;
+      }
+
+      .invite-card{
+        width:92%;
+        height:78vh;
+      }
+
+      .top-text{
+        width:84%;
+        font-size:22px;
+      }
+
+      .seal{
+        width:118px;
+        height:118px;
+      }
+
+      .bottom-text{
+        width:82%;
+        font-size:11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENTRY -->
+  <div id="entry-screen">
+    <div class="invite-card">
+      <button class="seal" onclick="openInvite()" aria-label="Hap ftesën"></button>
+      <div class="bottom-text">Kliko vulën për të hapur ftesën</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div id="main">
+
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="brand">Harbin <span>&amp;</span> Muazes</div>
+        <div class="header-date">E Diel, 20 <span style="color:var(--gold)">Shtator</span> 2026</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-box">
+        <div class="hero-sub">Ftesë Dasme</div>
+        <h1>Harbin &amp; Muazes</h1>
+        <p>
+          Me shumë dashuri dhe gëzim, ju ftojmë të bëheni pjesë e ditës më të bukur të jetës sonë.
+          Prania juaj do ta bëjë këtë moment edhe më të paharrueshëm për ne dhe familjet tona.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ne të dy</h2>
+          <p>
+            Dy zemra, dy rrugë të ndryshme dhe një histori që u bashkua në momentin e duhur.
+            Sot ju ftojmë të ndani me ne gëzimin e fillimit të një kapitulli të ri.
+          </p>
+        </div>
+
+        <div class="couple-grid">
+          <div class="person-card">
+            <div class="person-photo" style="background-image:url('images/photo_1.jpg');"></div>
+            <div class="person-content">
+              <h3>Harbin</h3>
+              <div class="surname">Hoxha</div>
+              <p>
+                Harbin është një person i qetë, fisnik dhe i vendosur,
+                i cili gjithmonë ka besuar në dashurinë e sinqertë, familjen dhe rrugëtimin e përbashkët.
+              </p>
+            </div>
+          </div>
+
+          <div class="heart-divider">&amp;</div>
+
+          <div class="person-card">
+            <div class="person-photo" style="background-image:url('images/photo_2.jpg');"></div>
+            <div class="person-content">
+              <h3>Muazes</h3>
+              <div class="surname">Krasniqi</div>
+              <p>
+                Muazes është një shpirt i ngrohtë, e ëmbël dhe plot dritë,
+                që sjell buzëqeshje, dashuri dhe qetësi në çdo zemër që e njeh.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section day-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Dita Jonë</h2>
+        </div>
+
+        <div class="day-box">
+          <div class="day-date">E Diel, 20 <span>Shtator</span> 2026</div>
+
+          <div class="count-grid">
+            <div class="count-item">
+              <div class="num" id="days">00</div>
+              <div class="label">Ditë</div>
+            </div>
+            <div class="count-item">
+              <div class="num" id="hours">00</div>
+              <div class="label">Orë</div>
+            </div>
+            <div class="count-item">
+              <div class="num" id="minutes">00</div>
+              <div class="label">Minuta</div>
+            </div>
+            <div class="count-item">
+              <div class="num" id="seconds">00</div>
+              <div class="label">Sekonda</div>
+            </div>
+          </div>
+
+          <p class="description">
+            Në këtë ditë të veçantë, me bekimin e familjeve tona dhe me dashurinë që na bashkon,
+            dëshirojmë të festojmë fillimin e jetës sonë së bashku në praninë tuaj.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Historia Jonë</h2>
+          <p>
+            Çdo dashuri e bukur fillon me një takim, rritet me besim dhe bëhet e përjetshme me vendimin për të ecur bashkë.
+          </p>
+        </div>
+
+        <div class="story-list">
+          <div class="story-item">
+            <div class="story-image" style="background-image:url('images/story_photo_1.jpg');"></div>
+            <div class="story-date">
+              <div class="year">2022</div>
+              <div class="month">Maj</div>
+            </div>
+            <div class="story-text">
+              <h3>Takimi i parë</h3>
+              <p>
+                Historia jonë filloi me një takim të thjeshtë, por plot ndjesi.
+                Një bisedë e ngrohtë, një buzëqeshje e sinqertë dhe një ndjenjë që të dy e kuptuam menjëherë.
+              </p>
+            </div>
+          </div>
+
+          <div class="story-item">
+            <div class="story-text">
+              <h3>Dashuria u rrit</h3>
+              <p>
+                Me kalimin e kohës, çdo moment i ndarë së bashku u bë më i vlefshëm.
+                Mësuam të mbështesim njëri-tjetrin, të qeshim bashkë dhe të ndërtojmë kujtime të paharrueshme.
+              </p>
+            </div>
+            <div class="story-date">
+              <div class="year">2023</div>
+              <div class="month">Dhj</div>
+            </div>
+            <div class="story-image" style="background-image:url('images/story_photo_2.jpg');"></div>
+          </div>
+
+          <div class="story-item">
+            <div class="story-image" style="background-image:url('images/story_photo_3.jpg');"></div>
+            <div class="story-date">
+              <div class="year">2025</div>
+              <div class="month">Kor</div>
+            </div>
+            <div class="story-text">
+              <h3>Premtimi i përjetshëm</h3>
+              <p>
+                Pas një rruge të bukur të mbushur me dashuri, vendosëm të themi “po” për një jetë të tërë.
+                Sot mezi presim ta ndajmë këtë gëzim me ju.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section events-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Programi i Dasmës</h2>
+          <p>
+            Ju mirëpresim me dashuri në ceremoninë dhe festën tonë.
+            Më poshtë mund të gjeni të gjitha detajet e ditës sonë të veçantë.
+          </p>
+        </div>
+
+        <div class="events-grid">
+          <div class="event-card">
+            <div class="event-photo" style="background-image:url('images/photo_the_ceremony.jpg');"></div>
+            <div class="event-content">
+              <h3>Ceremonia</h3>
+              <div class="event-meta">
+                <div><strong>Data:</strong> E Diel, 20 Shtator 2026</div>
+                <div><strong>Ora:</strong> 17:00 - 19:00</div>
+                <div><strong>Vendndodhja:</strong> Emerald Hotel, Prishtinë</div>
+              </div>
+              <a class="event-button" href="https://maps.google.com/maps?q=Emerald+Hotel,+Prishtine" target="_blank">Shiko në hartë</a>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-photo" style="background-image:url('images/photo_the_party.jpg');"></div>
+            <div class="event-content">
+              <h3>Festa</h3>
+              <div class="event-meta">
+                <div><strong>Data:</strong> E Diel, 20 Shtator 2026</div>
+                <div><strong>Ora:</strong> 20:00 - 00:00</div>
+                <div><strong>Vendndodhja:</strong> Royal Hall, Prishtinë</div>
+              </div>
+              <a class="event-button" href="https://maps.google.com/maps?q=Royal+Hall,+Prishtine" target="_blank">Shiko në hartë</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Momente</h2>
+          <p>
+            Disa kujtime nga rrugëtimi ynë, të cilat na kujtojnë se dashuria ndërtohet nga çaste të vogla dhe të sinqerta.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="images/gallery/gallery_photo_1.jpg" alt="Moment 1"></div>
+          <div class="gallery-item"><img src="images/gallery/gallery_photo_2.jpg" alt="Moment 2"></div>
+          <div class="gallery-item"><img src="images/gallery/gallery_photo_3.jpg" alt="Moment 3"></div>
+          <div class="gallery-item"><img src="images/gallery/gallery_photo_4.jpg" alt="Moment 4"></div>
+          <div class="gallery-item"><img src="images/gallery/gallery_photo_5.jpg" alt="Moment 5"></div>
+          <div class="gallery-item"><img src="images/gallery/gallery_photo_6.jpg" alt="Moment 6"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rsvp-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Konfirmo Pjesëmarrjen</h2>
+          <p>
+            Ju lutemi plotësoni formularin më poshtë për të konfirmuar praninë tuaj në këtë ditë të paharrueshme.
+          </p>
+        </div>
+
+        <div class="rsvp-box">
+          <form class="rsvp-form">
+            <div class="field">
+              <label for="name">Emri i plotë</label>
+              <input id="name" type="text" placeholder="Shkruani emrin tuaj">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="Shkruani email-in tuaj">
+            </div>
+
+            <div class="field">
+              <label for="attendance">Pjesëmarrja</label>
+              <select id="attendance">
+                <option>Po, do të marr pjesë</option>
+                <option>Jo, nuk mund të marr pjesë</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="event">Eventi</label>
+              <select id="event">
+                <option>Ceremonia dhe Festa</option>
+                <option>Vetëm Ceremonia</option>
+                <option>Vetëm Festa</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="message">Mesazhi juaj</label>
+              <textarea id="message" placeholder="Na lini një mesazh të bukur..."></textarea>
+            </div>
+
+            <div class="field full" style="align-items:center; margin-top:4px;">
+              <button type="submit" class="submit-btn">Dërgo Konfirmimin</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h2>Faleminderit!</h2>
+      <p>Me dashuri, Harbin &amp; Muazes</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function openInvite(){
+      document.getElementById("entry-screen").style.opacity = "0";
+
+      setTimeout(() => {
+        document.getElementById("entry-screen").style.display = "none";
+        document.getElementById("main").classList.add("show");
+        startCountdown();
+      }, 1000);
+    }
+
+    function startCountdown(){
+      const weddingDate = new Date("September 20, 2026 17:00:00").getTime();
+
+      setInterval(() => {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if(distance < 0){
+          document.getElementById("days").innerText = "00";
+          document.getElementById("hours").innerText = "00";
+          document.getElementById("minutes").innerText = "00";
+          document.getElementById("seconds").innerText = "00";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, "0");
+        document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+      }, 1000);
+    }
+
+    document.querySelector(".rsvp-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Faleminderit! Konfirmimi juaj u dërgua me sukses.");
+    });
+  </script>
+</body>
+</html>
